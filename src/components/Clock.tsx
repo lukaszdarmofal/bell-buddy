@@ -1,4 +1,3 @@
-// @ts-expect-error aaa
 import { useState, useEffect } from 'react'
 
 function Clock() {

@@ -1,3 +1,4 @@
+//@ts-expect-error aaa
 import { useState } from 'react';
 import './App.css';
 import Clock from './components/Clock.tsx'
@@ -6,7 +7,6 @@ import AddStudentForm from "./components/AddStudentForm.tsx";
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
