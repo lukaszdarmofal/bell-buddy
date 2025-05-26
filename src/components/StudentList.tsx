@@ -2,7 +2,9 @@
 import { useState } from 'react'
 import StudentItem from "./StudentItem.tsx";
 
-function StudentList() {
+
+// @ts-expect-error aaa
+function StudentList({students}) {
     return (
         <>
             <table className={ "student-list-table" }>
@@ -13,8 +15,18 @@ function StudentList() {
                     <th>Is present?</th>
                 </tr>
 
-                { /* example item */ }
-                <StudentItem studentId={1} studentName={"Łukasz"} studentSurname={"Darmofał"} />
+
+                {
+                    // @ts-expect-error aaa
+                    students.map((student, index) => (
+                    <StudentItem
+                        key={index}
+                        studentId={student.studentId}
+                        studentName={student.studentName}
+                        studentSurname={student.studentSurname}
+                    />
+                ))}
+
 
             </table>
         </>

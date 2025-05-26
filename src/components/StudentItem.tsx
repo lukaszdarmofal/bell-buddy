@@ -1,5 +1,4 @@
-// @ts-expect-error aaa
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 type StudentProps = {
     studentId: number
@@ -8,6 +7,9 @@ type StudentProps = {
 }
 
 const StudentItem: React.FC<StudentProps> = ( { studentId, studentName, studentSurname })=>  {
+
+    const [isPresent, setPresense] = useState(false)
+
     return (
         <>
             <tr>
@@ -15,7 +17,7 @@ const StudentItem: React.FC<StudentProps> = ( { studentId, studentName, studentS
                 <td>{studentName}</td>
                 <td>{studentSurname}</td>
                 <td>
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={ () => {setPresense(!isPresent) } } />
                 </td>
             </tr>
 
