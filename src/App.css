@@ -19,6 +19,7 @@ header {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #ffffff;
+  background: #242424;
 }
 
 header button, form button {
@@ -50,9 +51,19 @@ header button, form button {
   height: 20%;
 }
 
+.student-list-table tr:nth-child(even) {
+  background-color: hsl(0, 0%, 20%);
+}
+
 .student-list-table tr td, .student-list-table tr th {
   text-align: center;
   padding: 10px 50px;
+}
+
+.student-list-table tr th {
+  background-color: #242424;
+  border-top: white 2px solid;
+  border-bottom: white 2px solid;
 }
 
 form {

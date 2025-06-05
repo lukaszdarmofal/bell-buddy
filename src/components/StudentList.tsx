@@ -1,10 +1,12 @@
-// @ts-expect-error aaa
 import { useState } from 'react'
 import StudentItem from "./StudentItem.tsx";
 
 
 // @ts-expect-error aaa
 function StudentList({students}) {
+
+    const [presenseCount, setPresenseCount] = useState(0);
+
     return (
         <>
             <table className={ "student-list-table" }>
@@ -15,7 +17,6 @@ function StudentList({students}) {
                     <th>Is present?</th>
                 </tr>
 
-
                 {
                     // @ts-expect-error aaa
                     students.map((student, index) => (
@@ -24,9 +25,16 @@ function StudentList({students}) {
                         studentId={student.studentId}
                         studentName={student.studentName}
                         studentSurname={student.studentSurname}
+                        setPresenseCount={setPresenseCount}
                     />
                 ))}
 
+                <tr>
+                    <th> </th>
+                    <th>Present students:</th>
+                    <th>{presenseCount}</th>
+                    <th> </th>
+                </tr>
 
             </table>
         </>
