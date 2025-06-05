@@ -2,10 +2,9 @@
 import { useState } from 'react'
 
 // @ts-expect-error aaa
-function AddStudentForm({ onAddStudent } ) {
+function AddStudentForm({ onAddStudent, students } ) {
 
     const [formData, setFormData] = useState({
-        studentId: '',
         studentName: '',
         studentSurname: '',
     })
@@ -16,22 +15,30 @@ function AddStudentForm({ onAddStudent } ) {
         setFormData({ ...formData, [name]: value })
     }
 
+
     //@ts-expect-error aaa
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        let newId = 1;
+        if (students.length > 0) {
+            //@ts-expect-error aaa
+            const maxId = Math.max(...students.map(s => s.studentId));
+            newId = maxId + 1;
+        }
+
         onAddStudent({
-            studentId: Number(formData.studentId),
+            studentId: newId,
             studentName: formData.studentName,
             studentSurname: formData.studentSurname,
         })
 
-        setFormData({ studentId: '', studentName: '', studentSurname: '' })
+        setFormData({ studentName: '', studentSurname: '' })
     }
 
     return (
         <form onSubmit={handleSubmit} className={"add-student-form"}>
-            <input type="number" value={formData.studentId} onChange={handleChange} name="studentId" placeholder="Student Id" required />
+            {/*<input type="number" value={formData.studentId} onChange={handleChange} name="studentId" placeholder="Student Id" required />*/}
             <input type="text" value={formData.studentName} onChange={handleChange} name="studentName" placeholder="Student Name" required />
             <input type="text" value={formData.studentSurname} onChange={handleChange} name="studentSurname" placeholder="Student Surname" required />
 

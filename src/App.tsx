@@ -18,11 +18,20 @@ function App() {
         setStudents(prev => [...prev, student]);
     };
 
+    const [activeTab, setActiveTab] = useState("Clock");
+
+
   return (
     <>
-      <Clock />
-      <StudentList students={students} />
-      <AddStudentForm onAddStudent={handleAddStudent} />
+          <header>
+              <button onClick={ () => { setActiveTab("Clock") } }>Clock</button>
+              <button onClick={ () => { setActiveTab("List") } }>Student List</button>
+              <button onClick={ () => { setActiveTab("Form") } }>Add Form</button>
+          </header>
+
+        {activeTab === "Clock" && <Clock />}
+        {activeTab === "List" && <StudentList students={students} />}
+        {activeTab === "Form" && <AddStudentForm onAddStudent={handleAddStudent} students={students} />}
     </>
   )
 }
