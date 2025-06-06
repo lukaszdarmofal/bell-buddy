@@ -21,12 +21,20 @@ function Clock() {
         const currentSecond = date.getSeconds()
 
         let currentSecondString = currentSecond.toString()
+        let currentMinuteString = currentMinute.toString()
+        let currentHourString = currentHour.toString()
 
         if(currentSecond < 10) {
             currentSecondString = `0${currentSecond}`
         }
+        if(currentMinute < 10) {
+            currentMinuteString = `0${currentMinute}`
+        }
+        if(currentHour < 10) {
+            currentHourString = `0${currentHour}`
+        }
 
-        return `${currentHour} : ${currentMinute} : ${currentSecondString}`
+        return `${currentHourString} : ${currentMinuteString} : ${currentSecondString}`
     }
 
 
